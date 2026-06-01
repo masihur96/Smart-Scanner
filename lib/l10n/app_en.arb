@@ -22,5 +22,16 @@
   "phone": "Phone Number",
   "wifi": "WiFi Network",
   "location": "Location",
-  "text": "Text"
+  "text": "Text",
+  "dashboard": "Dashboard",
+  "goodMorning": "Good Morning",
+  "goodAfternoon": "Good Afternoon",
+  "goodEvening": "Good Evening",
+  "totalScans": "Total Scans",
+  "favorites": "Favorites",
+  "scanNow": "Scan Now",
+  "generateQR": "Generate QR",
+  "recentScans": "Recent Scans",
+  "viewAll": "View All",
+  "latestActivity": "Latest Activity"
 }

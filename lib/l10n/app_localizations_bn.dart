@@ -82,4 +82,37 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get text => 'টেক্সট';
+
+  @override
+  String get dashboard => 'ড্যাশবোর্ড';
+
+  @override
+  String get goodMorning => 'শুভ সকাল';
+
+  @override
+  String get goodAfternoon => 'শুভ দুপুর';
+
+  @override
+  String get goodEvening => 'শুভ সন্ধ্যা';
+
+  @override
+  String get totalScans => 'মোট স্ক্যান';
+
+  @override
+  String get favorites => 'প্রিয়';
+
+  @override
+  String get scanNow => 'স্ক্যান করুন';
+
+  @override
+  String get generateQR => 'কিউআর তৈরি';
+
+  @override
+  String get recentScans => 'সাম্প্রতিক স্ক্যান';
+
+  @override
+  String get viewAll => 'সব দেখুন';
+
+  @override
+  String get latestActivity => 'সাম্প্রতিক কার্যকলাপ';
 }

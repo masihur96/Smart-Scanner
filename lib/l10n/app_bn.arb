@@ -22,5 +22,16 @@
   "phone": "ফোন নম্বর",
   "wifi": "ওয়াইফাই নেটওয়ার্ক",
   "location": "অবস্থান",
-  "text": "টেক্সট"
+  "text": "টেক্সট",
+  "dashboard": "ড্যাশবোর্ড",
+  "goodMorning": "শুভ সকাল",
+  "goodAfternoon": "শুভ দুপুর",
+  "goodEvening": "শুভ সন্ধ্যা",
+  "totalScans": "মোট স্ক্যান",
+  "favorites": "প্রিয়",
+  "scanNow": "স্ক্যান করুন",
+  "generateQR": "কিউআর তৈরি",
+  "recentScans": "সাম্প্রতিক স্ক্যান",
+  "viewAll": "সব দেখুন",
+  "latestActivity": "সাম্প্রতিক কার্যকলাপ"
 }

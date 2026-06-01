@@ -241,6 +241,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Text'**
   String get text;
+
+  /// No description provided for @dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
+
+  /// No description provided for @goodMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Morning'**
+  String get goodMorning;
+
+  /// No description provided for @goodAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Afternoon'**
+  String get goodAfternoon;
+
+  /// No description provided for @goodEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Evening'**
+  String get goodEvening;
+
+  /// No description provided for @totalScans.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Scans'**
+  String get totalScans;
+
+  /// No description provided for @favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// No description provided for @scanNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Now'**
+  String get scanNow;
+
+  /// No description provided for @generateQR.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate QR'**
+  String get generateQR;
+
+  /// No description provided for @recentScans.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Scans'**
+  String get recentScans;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @latestActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest Activity'**
+  String get latestActivity;
 }
 
 class _AppLocalizationsDelegate

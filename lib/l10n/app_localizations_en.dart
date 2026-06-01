@@ -82,4 +82,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get text => 'Text';
+
+  @override
+  String get dashboard => 'Dashboard';
+
+  @override
+  String get goodMorning => 'Good Morning';
+
+  @override
+  String get goodAfternoon => 'Good Afternoon';
+
+  @override
+  String get goodEvening => 'Good Evening';
+
+  @override
+  String get totalScans => 'Total Scans';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get scanNow => 'Scan Now';
+
+  @override
+  String get generateQR => 'Generate QR';
+
+  @override
+  String get recentScans => 'Recent Scans';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get latestActivity => 'Latest Activity';
 }

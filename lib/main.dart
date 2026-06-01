@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:smart_qr/core/theme.dart';
+import 'package:smart_qr/features/dashboard/dashboard_screen.dart';
 import 'package:smart_qr/features/scanner/scanner_screen.dart';
 import 'package:smart_qr/l10n/app_localizations.dart';
 
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         Locale('bn'), // Bangla
       ],
       locale: _locale,
-      home: const ScannerScreen(),
+      home: const DashboardScreen(),
     );
   }
 }

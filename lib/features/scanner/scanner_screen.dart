@@ -26,6 +26,7 @@ class _ScannerScreenState extends State<ScannerScreen> with WidgetsBindingObserv
   );
   final PermissionService _permissionService = PermissionService();
   bool _isPermissionGranted = false;
+  bool _isHandlingScan = false;
 
   @override
   void initState() {
@@ -90,16 +91,20 @@ class _ScannerScreenState extends State<ScannerScreen> with WidgetsBindingObserv
           MobileScanner(
             controller: controller,
             onDetect: (capture) {
+              if (_isHandlingScan) return;
+
               final List<Barcode> barcodes = capture.barcodes;
               for (final barcode in barcodes) {
-                debugPrint('Barcode found! ${barcode.rawValue}');
-
+                if (barcode.rawValue == null) continue;
                 
+                setState(() => _isHandlingScan = true);
+                
+                debugPrint('Barcode found! ${barcode.rawValue}');
                 Vibration.vibrate(duration: 50);
                 
-                controller.stop(); // Stop scanning after detection
+                controller.stop();
                 _handleScan(barcode);
-                break; // Only handle the first barcode
+                break;
               }
             },
           ),
@@ -265,7 +270,10 @@ class _ScannerScreenState extends State<ScannerScreen> with WidgetsBindingObserv
       MaterialPageRoute(
         builder: (context) => ResultScreen(rawValue: rawValue),
       ),
-    ).then((_) => controller.start());
+    ).then((_) {
+      setState(() => _isHandlingScan = false);
+      controller.start();
+    });
   }
 
   QrType _detectType(String value) {
