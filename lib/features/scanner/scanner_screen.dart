@@ -20,10 +20,7 @@ class ScannerScreen extends StatefulWidget {
 }
 
 class _ScannerScreenState extends State<ScannerScreen> with WidgetsBindingObserver {
-  final MobileScannerController controller = MobileScannerController(
-    detectionSpeed: DetectionSpeed.noDuplicates,
-    returnImage: true,
-  );
+  late MobileScannerController controller;
   final PermissionService _permissionService = PermissionService();
   bool _isPermissionGranted = false;
   bool _isHandlingScan = false;
@@ -31,6 +28,10 @@ class _ScannerScreenState extends State<ScannerScreen> with WidgetsBindingObserv
   @override
   void initState() {
     super.initState();
+    controller = MobileScannerController(
+      detectionSpeed: DetectionSpeed.noDuplicates,
+      returnImage: true,
+    );
     WidgetsBinding.instance.addObserver(this);
     _checkPermission();
   }
