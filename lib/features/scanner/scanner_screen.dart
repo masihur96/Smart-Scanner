@@ -214,36 +214,44 @@ class _ScannerScreenState extends State<ScannerScreen> with WidgetsBindingObserv
           Positioned(
             top: 50,
             right: 20,
-            child: IconButton(
-              icon: const Icon(Icons.history, color: Colors.white, size: 32),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HistoryScreen()),
-                );
-              },
+            child: Row(
+              children: [
+                PopupMenuButton<Locale>(
+                  icon: const Icon(Icons.language, color: Colors.white, size: 32),
+                  onSelected: (Locale locale) {
+                    MyApp.setLocale(context, locale);
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Locale>>[
+                    const PopupMenuItem<Locale>(
+                      value: Locale('en'),
+                      child: Text('English'),
+                    ),
+                    const PopupMenuItem<Locale>(
+                      value: Locale('bn'),
+                      child: Text('বাংলা'),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  icon: const Icon(Icons.history, color: Colors.white, size: 32),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HistoryScreen()),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
           // Language Switcher
           Positioned(
             top: 50,
             left: 20,
-            child: PopupMenuButton<Locale>(
-              icon: const Icon(Icons.language, color: Colors.white, size: 32),
-              onSelected: (Locale locale) {
-                MyApp.setLocale(context, locale);
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<Locale>>[
-                const PopupMenuItem<Locale>(
-                  value: Locale('en'),
-                  child: Text('English'),
-                ),
-                const PopupMenuItem<Locale>(
-                  value: Locale('bn'),
-                  child: Text('বাংলা'),
-                ),
-              ],
-            ),
+            child: BackButton(
+              color: Colors.white,
+              onPressed: () => Navigator.pop(context),
+            )
           ),
         ],
       ),
