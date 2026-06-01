@@ -96,19 +96,20 @@ class _ResultScreenState extends State<ResultScreen> {
 
     final l10n = AppLocalizations.of(context)!;
 
-    Future<void> _launch(Uri uri, {bool external = true}) async {
-      if (!await canLaunchUrl(uri)) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(uri.toString())),
-        );
-        return;
+    Future<void> _launch(Uri uri, {LaunchMode mode = LaunchMode.platformDefault}) async {
+      try {
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: mode);
+        } else {
+          throw 'Could not launch $uri';
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(l10n.website)),
+          );
+        }
       }
-      await launchUrl(
-        uri,
-        mode: external
-            ? LaunchMode.externalApplication
-            : LaunchMode.platformDefault,
-      );
     }
 
     switch (_type) {
@@ -116,20 +117,15 @@ class _ResultScreenState extends State<ResultScreen> {
     // 🌐 URL
       case QrType.url:
         String raw = widget.rawValue.trim();
-
-        // Normalize URL
-        String url;
-        if (raw.startsWith('http://') || raw.startsWith('https://')) {
-          url = raw;
-        } else {
-          url = 'https://$raw';
+        if (!raw.startsWith('http://') && !raw.startsWith('https://')) {
+          raw = 'https://$raw';
         }
 
-        final Uri uri = Uri.tryParse(url) ?? Uri();
+        final Uri? uri = Uri.tryParse(raw);
 
-        if (!uri.hasScheme) {
+        if (uri == null || !uri.hasScheme) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Invalid")),
+            const SnackBar(content: Text("Invalid URL")),
           );
           break;
         }
@@ -158,18 +154,7 @@ class _ResultScreenState extends State<ResultScreen> {
           if (!proceed) break;
         }
 
-        // Launch externally (REQUIRED)
-        if (!await canLaunchUrl(uri)) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Could not open")),
-          );
-          break;
-        }
-
-        await launchUrl(
-          uri,
-          mode: LaunchMode.externalApplication,
-        );
+        await _launch(uri, mode: LaunchMode.externalApplication);
         break;
 
     // ✉ EMAIL
@@ -179,7 +164,7 @@ class _ResultScreenState extends State<ResultScreen> {
           scheme: 'mailto',
           path: email,
         );
-        await _launch(uri, external: false);
+        await _launch(uri);
         break;
 
     // 📞 PHONE
